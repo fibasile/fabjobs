@@ -1,0 +1,12 @@
+<template name="jobItem">
+	<tr>
+		<td class="col-sm-2 vert-align"><span class="label label-success text-uppercase">{{job.type}}</span>
+			{{#if featured}}
+				<br/><span class="label label-warning text-uppercase">featured</span>
+			{{/if}}
+		</td>
+		<td><a href="/jobs/{{_id}}">{{job.title}}</a><br/>{{job.company_name}}</td>
+		<td class="vert-align">{{job.location}}</td>
+		<td class="vert-align">{{ shortSubmitted }}</td>
+	</tr>
+</template>

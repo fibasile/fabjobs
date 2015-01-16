@@ -1,0 +1,137 @@
+<template name="jobPostForm">
+
+<h4>Post a new job</h4>
+
+	<div class="row">
+		<div class="col-md-9">
+
+			<div class="panel">
+				<div class="panel-body">
+					<form class="form-vertical">
+						<p><span class="label label-default">COMPANY DETAILS</span></p>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+								    <label for="exampleInputEmail1" class="control-label">Company name</label>
+								    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Acme Inc">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								    <label for="exampleInputEmail1">Website</label>
+								    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="http://">
+								</div>
+							</div>
+						</div>
+						<p><span class="label label-default">JOB DETAILS</span></p>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Job title</label>
+									<input type="text" class="form-control" placeholder="">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Job type</label>
+									<select id="job_type" name="job_type" class="form-control">
+												<option selected>Select a type</option>
+				                        <option>Full-Time</option>
+				                        <option>Internship</option>
+				                        <option>Part-Time</option>
+				                        <option>Temporary</option>
+									</select>
+								</div> <!-- form group end-->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label>Description</label>
+									<textarea rows="3" class="form-control"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Job category</label>
+									<select id="job_category" name="job_category" class="form-control">
+												<option selected>Select a category</option>
+				                        <option>CAD</option>
+				                        <option>Fabrication</option>
+				                        <option>Electronics</option>
+				                        <option>IT</option>
+									</select>									
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Job salary (USD)</label>
+									<select id="job_salary" name="job_salary" class="form-control">
+												<option selected>Select a salary </option>
+												<option value="9" class="level-0">Less than 20,000</option>
+												<option value="10" class="level-0">20,000 – 40,000</option>
+												<option value="11" class="level-0">40,000 – 60,000</option>
+												<option value="12" class="level-0">60,000 – 80,000</option>
+												<option value="13" class="level-0">80,000 – 100,000</option>
+												<option value="14" class="level-0">100,000 and above</option>
+									</select>
+								</div> <!-- form group end-->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label>Job Location</label>
+									<div class="form-group">
+										<span class="help-block">
+											Leave blank if the location of the applicant does not matter e.g. the job involves working from home.
+										</span>
+										<div class="row">
+											<div class="col-sm-10">
+												<input type="text" class="form-control" id="geolocation-address" autocomplete="off" placeholder="">
+												
+											</div>
+											<div class="col-sm-2">
+												<a class="btn btn-primary btn-success" id="geolocation-load" href="#">Search</a>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+											<input type="hidden" class="text" id="geolocation-latitude" value="">
+											<input type="hidden" class="text" id="geolocation-longitude" value="">
+											<div id="geolocation-map" style="height: 400px"> 												
+											</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+										<label>How to apply</label>
+										<textarea rows="3" class="form-control"></textarea>
+										<span class="help-block">Tell applicants how to apply – they will also be able to apply via the “apply” button on the listing's page.</span>
+								</div>
+							</div>
+						</div>	
+						
+						<a class="btn btn-primary btn-large pull-right" href="post-job.html">Post job</a><br><br>
+						
+					</form>
+				</div>
+			</div> <!-- panel end-->
+		
+				
+		</div>
+		<div class="col-md-3">
+			<div class="well">
+				Please fill in the required fields as precisely as possible. This way the job listing will be full searchable.
+			</div>
+		</div>
+	
+	</div>
+	
+</template>

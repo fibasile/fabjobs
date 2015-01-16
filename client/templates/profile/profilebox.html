@@ -1,0 +1,14 @@
+<template name="profilebox">
+	{{#if currentUser}}
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
+			{{username}} <span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+		    <li role="presentation"><a role="menuitem" tabindex="-1" id="logoutButton" href="#">Logout</a></li>
+		  </ul>
+	</li>
+	{{else}}
+	{{> loginButtons}}
+	{{/if}}
+</template>

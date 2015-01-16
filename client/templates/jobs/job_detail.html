@@ -1,0 +1,69 @@
+<template name="jobDetail">
+				<h3 class="visible-print-block"><a href="http://jobs.fabeconomy.com">Fab Economy Job Board</a></h3>
+	
+				<h3>{{ job.title }}</h3>
+				<h5><a href="{{ job.website }}">{{ job.company_name}}</a></h5>
+				<p><span class="label label-success text-uppercase">{{ job.type }}</span> 
+					{{#if featured}}
+						<span class="label label-warning text-uppercase">featured</span>
+					{{/if}}
+					| {{ job.location }} | Posted on <strong>{{ shortSubmitted }}</strong> by {{ author }}</p>
+		
+				<hr/>
+
+	<div class="row">
+		<div class="col-md-9">
+	
+				<div class="panel panel-default">
+					<div class="panel-body">
+						
+						<h4>JOB DESCRIPTION</h4>
+						
+						<p>{{ job.description }}</p>
+						
+					</div>
+				</div>
+	
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h4>JOB SUMMARY</h4>
+			
+						<div class="row">
+							<div class="col-md-3"><strong>Company</strong><br/>{{ job.company_name}}</div>
+							<div class="col-md-3"><strong>Location</strong><br/>{{ job.location }}</div>
+							<div class="col-md-3"><strong>Job type</strong><br/>{{ job.type }}</div>
+							<div class="col-md-3"><strong>Job salary</strong><br/>Up to $ {{ job.salary }}</div>
+						</div>
+					</div>
+				</div>
+	
+				<p class="hidden-print">
+					<a href="/" class="btn btn-lg btn-primary"><span class="fa fa-arrow-left"></span> Back to jobs</a>
+					<a href="/jobs/{{ _id }}/apply" class="pull-right btn btn-lg btn-success">Apply now</a>
+				</p>
+				
+		</div>
+		<div class="col-md-3 hidden-print">
+				<div class="panel">
+					<div class="panel-body">
+						<ul class="list-unstyled">
+							<li><a href="#" id="shareFB"><span class="fa fa-facebook"></span> Share on Facebook</a></li>
+							<li><a href="#" id="shareTwitter"><span class="fa fa-twitter"></span> Share on Twitter</a></li>
+							<li><a href="#" id="sharePrint"><span class="fa fa-print"></span> Print</a></li>
+							
+						</ul>
+					</div>
+				</div>
+				<div class="panel">
+					<div class="panel-heading">SIMILAR JOBS</div>
+					<div class="panel-body">
+						<p><a href="#">Job position</a> <br/> Acme Inc</p>
+						<p><a href="#">Job position</a> <br/> Acme Inc</p>
+						<p><a href="#">Job position</a> <br/> Acme Inc</p>
+					</div>
+				</div>
+				
+		</div>
+	</div>
+	
+</template>

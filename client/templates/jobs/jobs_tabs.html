@@ -1,0 +1,52 @@
+<template name="jobsTabs">
+	
+	 <div role="tabpanel">
+	   <!-- Nav tabs -->
+	   <ul class="nav nav-tabs" role="tablist">
+	     <li role="presentation" class="active"><a href="#featured" aria-controls="featured" role="tab" data-toggle="tab">Featured jobs</a></li>
+	     <li role="presentation"><a href="#recent" aria-controls="recent" role="tab" data-toggle="tab">Recent jobs</a></li>
+	     <li role="presentation"><a href="#top" aria-controls="top" role="tab" data-toggle="tab">Top jobs</a></li>
+	   </ul>
+
+	   <!-- Tab panes -->
+	   <div class="tab-content">
+	     <div role="tabpanel" class="tab-pane active" id="featured">
+			<br/>
+			<table class="table table-striped">
+				<tbody>
+					{{#each featuredJobs}}
+					{{> jobItem }}
+					{{/each}}
+				</tbody>
+			</table>
+		
+	     	<p><span class="pull-right">33 Jobs found</span></p>
+		
+	     </div>
+	     <div role="tabpanel" class="tab-pane" id="recent">
+			<br/>
+			<table class="table table-striped">
+				<tbody>
+					{{#each recentJobs}}
+					{{> jobItem }}
+					{{/each}}
+				</tbody>
+			</table>
+			
+			
+	     </div>
+	     <div role="tabpanel" class="tab-pane" id="top">
+			<br/>
+			<table class="table table-striped">
+				<tbody>
+					{{#each topJobs}}
+					{{> jobItem }}
+					{{/each}}
+				</tbody>
+			</table>
+	     </div>
+	   </div>
+
+	 </div> <!--tabpanel end-->
+	
+</template>

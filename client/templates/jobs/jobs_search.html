@@ -1,0 +1,42 @@
+<template name="jobsSearch">
+   <div class="row">
+		  	 <div class="col-sm-9">
+	
+			<div>
+			<h5>Search results for: 
+					{{#each filters}}
+						<span><mark>{{this}}</mark></span>
+					{{/each}}
+					{{#each tags}}
+						<span><mark>{{this}}</mark></span>
+					{{/each}}
+			</h5>
+			</div>
+				
+	
+			<div class="panel panel-default">
+				<div class="panel-body">
+					{{#if count}}
+					<table class="table table-striped">
+					<tbody>
+						{{#each jobs}}
+						{{> jobItem }}
+						{{/each}}
+					</tbody>
+					</table>
+					<p class="pull-right">{{count}} jobs found</p>
+					{{else}}
+					Sorry, no job matches your query at the moment
+					{{/if}}
+					
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			{{> search}}
+			{{> searchtags}}
+			{{> searchfilters}}
+		</div>
+	</div>
+	
+</template>

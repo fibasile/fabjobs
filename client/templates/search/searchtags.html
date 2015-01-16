@@ -1,0 +1,21 @@
+<template name="searchtags">
+	<div class="panel panel-warning">
+		<div class="panel-body">
+	<ul class="list-unstyled large">
+	{{#each tags}}
+	  {{> searchtag}}
+	{{/each}}
+	</ul>
+	</div>
+	</div>
+</template>
+
+
+<template name="searchtag">
+  <li class="">
+	 <a class="tag" href="#"><small>{{ label }}</small></a>
+	 {{#if showCount }}
+    <span class="badge">{{ count }}</span>
+	 {{/if}}
+  </li>
+</template>
