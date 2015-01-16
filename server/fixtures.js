@@ -1,15 +1,57 @@
-if (Jobs.find().count() === 0){
+if (Jobs.find().count() === 0) {
    var now = new Date().getTime();
-   
-   var fibasileId = Meteor.users.insert({
-      // username: 'fibasile',
-      profile: { name: 'Fiore Basile'},
-      // emails: [
-      //    {'address' : 'fiore.basile@gmail.com', verified: true}
-      // ]
+
+   var users = [{
+      username: 'normal',
+      name: "Normal User",
+      email: "normal@example.com",
+      roles: []
+   }, {
+      username: 'fibasile',
+      name: "Fiore Basile",
+      email: "fiore.basile@gmail.com",
+      roles: ['manager']
+   }, {
+      username: 'admin',
+      name: "Admin User",
+      email: "admin@example.com",
+      roles: ['admin', 'manager']
+   }];
+
+   _.each(users, function(user) {
+      var id;
+
+      id = Accounts.createUser({
+         username: user.username,
+         email: user.email,
+         password: "apple1",
+         profile: {
+            name: user.name
+         }
+      });
+
+      if (user.roles.length > 0) {
+         // Need _id of existing user record so this call must come 
+         // after `Accounts.createUser` or `Accounts.onCreate`
+         Roles.addUsersToRoles(id, user.roles);
+      }
+
    });
-   var fibasile = Meteor.users.findOne(fibasileId);
-   
+
+   // var fibasileId = Meteor.users.insert({
+   //    // username: 'fibasile',
+   //    profile: { name: 'Fiore Basile'},
+   //    // emails: [
+   //    //    {'address' : 'fiore.basile@gmail.com', verified: true}
+   //    // ]
+   // });
+   var fibasile = Meteor.users.findOne({
+      'username': 'fibasile'
+   });
+
+
+
+
    var job1 = Jobs.insert({
       userId: fibasile._id,
       author: fibasile.profile.name,
@@ -31,8 +73,8 @@ if (Jobs.find().count() === 0){
          instructions: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       }
    });
-   
-   var job12 =  Jobs.insert({
+
+   var job12 = Jobs.insert({
       userId: fibasile._id,
       author: fibasile.profile.name,
       submitted: new Date(now - 24 * 3600 * 1000),
@@ -53,8 +95,8 @@ if (Jobs.find().count() === 0){
          instructions: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       }
    });
-   
-   var job13 =  Jobs.insert({
+
+   var job13 = Jobs.insert({
       userId: fibasile._id,
       author: fibasile.profile.name,
       submitted: new Date(now - 48 * 3600 * 1000),
@@ -75,8 +117,8 @@ if (Jobs.find().count() === 0){
          instructions: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       }
    });
-   
-   
-   
-   
+
+
+
+
 }
