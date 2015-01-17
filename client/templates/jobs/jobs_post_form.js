@@ -1,7 +1,99 @@
 Template.jobPostForm.rendered= function(){
+   //start the map widget
    window.initializeMaps();
-   
+   //setup validation
+   $('#jobForm').formValidation({
+           // I am validating Bootstrap form
+           message: 'This value is not valid',
+           icon: {
+               valid: 'glyphicon glyphicon-ok',
+               invalid: 'glyphicon glyphicon-remove',
+               validating: 'glyphicon glyphicon-refresh'
+           },
+           fields: {
+               title: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The title is required and cannot be empty'
+                        },
+                    }
+               },
+               description: {
+                   validators: {
+                       notEmpty: {
+                           message: 'The description is required and cannot be empty'
+                       },
+                   }                   
+               }
+           }
+    });
+    $('#geolocation-address').keypress(function(event){
+            if (event.which == 13) {
+                event.preventDefault();
+                return false;   
+            }
+     });
 };
+
+Template.jobPostForm.helpers({
+    types: JobTypes.find(),
+    categories: Categories.find(),
+    salaries: [
+        {value: 'N/A', label: 'Select a salary'},
+	    {value: "20000", label: 'Up to 20,000'},
+        {value: "40000", label: '20,000 – 40,000'},
+        {value: "60000", label: '40,000 – 60,000'},
+        {value: "80000", label: '60,000 – 80,000'},
+        {value: "100000", label: '80,000 – 100,000'},
+        {value:"100000+", label: '100,000 and above'}
+    ]
+});
+
+Template.jobPostForm.events({
+    'click button[type="submit"]': function(event){
+        event.preventDefault();
+        var form = $('#jobForm'); 
+        var attributes = form.serializeArray();
+        var job = {};
+        _.each(attributes,function(attr){
+            var k = attr.name;
+            var v = attr.value;
+            if (k == 'geolocation-address')
+                k = 'location';
+            if (k == 'geolocation-latitude')
+                k = 'lat';
+            if (k == 'geolocation-longitude')
+                k = 'long';
+            if (k == 'job_category')
+                k = 'category';
+            if (k == 'job_type')
+                k = 'type';
+            if (k == 'job_salary')
+                k = 'salary';
+            job[k]=v;
+        });
+        console.log(job);
+        
+        Meteor.call('submitJob',job, 
+            function (error) {
+              // identify the error
+                if (error){
+                      Errors.insert(error);                  
+                      $(document).scrollTop(0);
+                } else {
+                    Router.go('/jobs/submitted');
+                }
+        });
+        
+    },
+    'form submit': function(event){
+        event.preventDefault();
+    }
+       
+    
+});
+
+
 
 window.initializeMaps = function(){
    var map;

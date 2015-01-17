@@ -1,7 +1,9 @@
 <template name="jobDetail">
 				<h3 class="visible-print-block"><a href="http://jobs.fabeconomy.com">Fab Economy Job Board</a></h3>
 	
-				<h3>{{ job.title }}</h3>
+				<h3>{{ job.title }} {{#if completed}}<span class="label label-danger">                        POSITION FILLED
+</span>{{/if}}</h3>
+                
 				<h5><a href="{{ job.website }}">{{ job.company_name}}</a></h5>
 				<p><span class="label label-success text-uppercase">{{ job.type }}</span> 
 					{{#if featured}}
@@ -14,32 +16,34 @@
 	<div class="row">
 		<div class="col-md-9">
 	
-				<div class="panel panel-default">
+				<div class="panel panel-default" style="min-height: 200px">
 					<div class="panel-body">
-						
-						<h4>JOB DESCRIPTION</h4>
-						
-						<p>{{ job.description }}</p>
-						
+						<h5>JOB DESCRIPTION</h5>
+						{{ job.description }}
 					</div>
 				</div>
 	
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h4>JOB SUMMARY</h4>
-			
+						<h5>JOB SUMMARY</h5>
 						<div class="row">
-							<div class="col-md-3"><strong>Company</strong><br/>{{ job.company_name}}</div>
-							<div class="col-md-3"><strong>Location</strong><br/>{{ job.location }}</div>
-							<div class="col-md-3"><strong>Job type</strong><br/>{{ job.type }}</div>
-							<div class="col-md-3"><strong>Job salary</strong><br/>Up to $ {{ job.salary }}</div>
+							<div class="col-md-4"><strong>Company</strong><br/>{{ job.company_name}}</div>
+							<div class="col-md-4"><strong>Location</strong><br/>{{ job.location }}</div>
+							<div class="col-md-4"><strong>Job type</strong><br/>{{ job.type }}</div>
+							<div class="col-md-4"><strong>Sector</strong><br/>{{ job.category }}</div>
+                            
+							<div class="col-md-4"><strong>Job salary</strong><br/>Up to $ {{ job.salary }}</div>
 						</div>
 					</div>
 				</div>
 	
 				<p class="hidden-print">
 					<a href="/" class="btn btn-lg btn-primary"><span class="fa fa-arrow-left"></span> Back to jobs</a>
+                    {{#if completed}}
+                   
+                    {{else}}
 					<a href="/jobs/{{ _id }}/apply" class="pull-right btn btn-lg btn-success">Apply now</a>
+                    {{/if}}
 				</p>
 				
 		</div>

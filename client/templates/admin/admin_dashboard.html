@@ -1,0 +1,38 @@
+<template name="adminDashboard">
+<h4>Dashboard</h4>
+<hr>
+<div class="row">
+    <div class="col-md-4">
+        <p>QUICK ACTIONS</p>
+        <p><a class="btn btn-default form-control" href="/jobs/post">Post a new Job</a></p>
+        <p><a class="btn btn-default form-control" href="/admin/jobs/pending">Approve job listings</a></p>
+        <p><a class="btn btn-default form-control" href="/admin/jobs/published">Close listing</a></p>
+    </div>
+    <div class="col-md-4">
+        <p>LATEST NOTIFICATIONS
+        <a href="#" class="pull-right">View all</a>
+        </p>
+        <div class="well">
+        <ul class="list-unstyled">
+            <li><strong>12 March 2015</strong> <br/>
+                User <a href="#">fibasile</a> posted a new <a href="#">job listing</a></li>
+            <li><strong>9 March 2015</strong> <br/>
+                User <a href="#">jmm</a> applied for <a href="#">Mechanical engineer</a> at <a href="#">Acme inc.</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <p>STATS</p>
+        <div class="well">
+            <dl>
+              <dt>Jobs posted</dt>
+              <dd>333</dd>
+              <dt>Active users</dt>
+              <dd>333</dd>
+              <dt>Skills submitted</dt>
+              <dd>333</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+</template>

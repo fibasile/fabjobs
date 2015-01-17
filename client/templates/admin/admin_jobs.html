@@ -1,0 +1,84 @@
+<template name="adminJobs">
+    <h4>Job listings</h4> 
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="{{activeTab 'all'}}"><a href="/admin/jobs">Show All</a></li>
+        <li role="presentation" class="{{activeTab 'published'}}"><a href="/admin/jobs/published">Published</a></li>
+        <li role="presentation" class="{{activeTab 'pending'}}"><a href="/admin/jobs/pending">Pending</a></li>
+        <li role="presentation" class="{{activeTab 'featured'}}"><a href="/admin/jobs/featured">Featured</a></li>
+        <li role="presentation" class="{{activeTab 'completed'}}"><a href="/admin/jobs/completed">Completed</a></li>
+    </ul>
+<br/>
+<table class="table table-striped">
+    <tbody>
+       {{#each jobs}}
+           {{>adminJobsRow}}
+       {{else}}
+           {{>adminNoJobsRow}}
+       {{/each}} 
+    </tbody>
+</table>
+
+</template>
+
+<template name="adminNoJobsRow">
+    	<tr>
+            <td>No listing matches this criteria</td>
+        </tr>
+</template>
+
+<template name="adminJobsRow">
+    	<tr class="{{ hilightIfFeatured }}">
+            <td>{{#if published}}<span class="label label-success text-uppercase">published</span>
+                {{else}}
+                <span class="label label-info text-uppercase">pending</span>
+                {{/if}}
+                {{#if completed}}
+                <span class="label label-danger text-uppercase">closed</span>
+                {{/if}}
+            </td>
+    		<td>{{#if featured}}<span class="fa fa-star yellow"></span>{{/if}}
+                <a href="/jobs/{{_id}}">{{job.title}}</a><br/>
+                <span class="label label-default text-uppercase">{{job.type}}</span>
+                {{job.company_name}} | {{job.location}} </td>
+            <td></td>
+            <td class="col-sm-2 text-right">
+               <div class="dropdown">
+               <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                   <span class="fa fa-gear"></span>
+                   <span class="caret"></span>
+               </button>
+               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                   <li role="presentation">
+                       {{#if published}}
+                       <a role="menuitem" tabindex="-1" href="#" id="unpublish">Unpublish</a>
+                       {{else}}
+                       <a role="menuitem" tabindex="-1" href="#" id="publish">Publish</a>    
+                       {{/if}}
+                   </li>
+                   <li role="presentation">
+                       {{#if featured}}
+                       <a role="menuitem" tabindex="-1" href="#" id="unfeature">Not featured</a>
+                       {{else}}
+                       <a role="menuitem" tabindex="-1" href="#" id="feature">Featured</a>
+                        {{/if}}
+                    </li>
+                   <li role="presentation"><a role="menuitem" id="details" tabindex="-1" href="#">Details</a></li>
+                   <li role="presentation">
+                       {{#if completed}}
+                       <a role="menuitem" tabindex="-1" href="#" id="reopen">Reopen listing</a>
+                       {{else}}
+                       <a role="menuitem" tabindex="-1" href="#" id="close">Close listing</a>
+                       {{/if}}
+                       </li>
+                 </ul>
+               </div>
+           </td>
+           <td class="col-sm-1">
+               <button id="delete" class="btn btn-danger btn-sm">
+                   <span class="fa fa-trash"></span>
+               </button>
+           </td>
+    
+    	</tr>
+</template>
+    

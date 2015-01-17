@@ -7,19 +7,19 @@
 
 			<div class="panel">
 				<div class="panel-body">
-					<form class="form-vertical">
+					<form class="form-vertical" id="jobForm">
 						<p><span class="label label-default">COMPANY DETAILS</span></p>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-								    <label for="exampleInputEmail1" class="control-label">Company name</label>
-								    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Acme Inc">
+								    <label for="company_name" class="control-label">Company name</label>
+								    <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Acme Inc" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-								    <label for="exampleInputEmail1">Website</label>
-								    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="http://">
+								    <label for="website">Website</label>
+								    <input type="url" class="form-control" name="website" id="website" placeholder="http://"  required>
 								</div>
 							</div>
 						</div>
@@ -27,19 +27,18 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Job title</label>
-									<input type="text" class="form-control" placeholder="">
+									<label for="title">Job title</label>
+									<input type="text" id="title" name="title" class="form-control" placeholder="" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Job type</label>
-									<select id="job_type" name="job_type" class="form-control">
-												<option selected>Select a type</option>
-				                        <option>Full-Time</option>
-				                        <option>Internship</option>
-				                        <option>Part-Time</option>
-				                        <option>Temporary</option>
+									<label for="job_type">Job type</label>
+									<select id="job_type" name="job_type" class="form-control"  required>
+										<option value="" selected>Select a type</option>
+				                        {{#each types}}
+                                        <option value="{{label}}">{{label}}</option>
+                                        {{/each}}
 									</select>
 								</div> <!-- form group end-->
 							</div>
@@ -47,8 +46,8 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
-									<label>Description</label>
-									<textarea rows="3" class="form-control"></textarea>
+									<label for="description">Description</label>
+									<textarea rows="3" name="description" id="description" class="form-control"  required></textarea>
 								</div>
 							</div>
 						</div>
@@ -56,26 +55,21 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Job category</label>
-									<select id="job_category" name="job_category" class="form-control">
-												<option selected>Select a category</option>
-				                        <option>CAD</option>
-				                        <option>Fabrication</option>
-				                        <option>Electronics</option>
-				                        <option>IT</option>
-									</select>									
+									<select id="job_category" name="job_category" class="form-control"  required>
+										<option value="" selected>Select a category</option>
+				                        {{#each categories}}
+                                            <option value="{{label}}">{{label}}</option>
+                                        {{/each}}
+                                        </select>									
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Job salary (USD)</label>
 									<select id="job_salary" name="job_salary" class="form-control">
-												<option selected>Select a salary </option>
-												<option value="9" class="level-0">Less than 20,000</option>
-												<option value="10" class="level-0">20,000 – 40,000</option>
-												<option value="11" class="level-0">40,000 – 60,000</option>
-												<option value="12" class="level-0">60,000 – 80,000</option>
-												<option value="13" class="level-0">80,000 – 100,000</option>
-												<option value="14" class="level-0">100,000 and above</option>
+                                        {{#each salaries}}
+											<option value="{{value}}">{{label}}</option>
+										{{/each}}
 									</select>
 								</div> <!-- form group end-->
 							</div>
@@ -90,7 +84,7 @@
 										</span>
 										<div class="row">
 											<div class="col-sm-10">
-												<input type="text" class="form-control" id="geolocation-address" autocomplete="off" placeholder="">
+												<input type="text" class="form-control" id="geolocation-address" name="geolocation-address" autocomplete="off" placeholder="">
 												
 											</div>
 											<div class="col-sm-2">
@@ -99,8 +93,8 @@
 										</div>
 									</div>
 									<div class="form-group">
-											<input type="hidden" class="text" id="geolocation-latitude" value="">
-											<input type="hidden" class="text" id="geolocation-longitude" value="">
+											<input type="hidden" class="text" id="geolocation-latitude" name="geolocation-latitude" value="">
+											<input type="hidden" class="text" id="geolocation-longitude" name="geolocation-longitude" value="">
 											<div id="geolocation-map" style="height: 400px"> 												
 											</div>
 									</div>
@@ -112,13 +106,13 @@
 							<div class="col-md-12">
 								<div class="form-group">
 										<label>How to apply</label>
-										<textarea rows="3" class="form-control"></textarea>
+										<textarea rname="instructions" id="instructions" rows="3" class="form-control"></textarea>
 										<span class="help-block">Tell applicants how to apply – they will also be able to apply via the “apply” button on the listing's page.</span>
 								</div>
 							</div>
 						</div>	
 						
-						<a class="btn btn-primary btn-large pull-right" href="post-job.html">Post job</a><br><br>
+						<button type="submit" class="postJob btn btn-primary btn-large pull-right" >Submit job</button><br><br>
 						
 					</form>
 				</div>

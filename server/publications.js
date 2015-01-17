@@ -1,8 +1,8 @@
 Meteor.publish('jobs', function(options) {
-  // check(options, {
-//     sort: Object,
-//     limit: Number
-//   });
+  check(options, {
+    sort: Object,
+    limit: Number
+  });
   return Jobs.find({}, options);
 });
 

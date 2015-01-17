@@ -1,0 +1,15 @@
+<template name="jobApplyForm">
+    
+    				<h3>{{ job.title }} {{#if completed}}<span class="label label-danger">                        POSITION FILLED
+    </span>{{/if}}</h3>
+                
+    				<h5><a href="{{ job.website }}">{{ job.company_name}}</a></h5>
+    				<p><span class="label label-success text-uppercase">{{ job.type }}</span> 
+    					{{#if featured}}
+    						<span class="label label-warning text-uppercase">featured</span>
+    					{{/if}}
+    					| {{ job.location }} | Posted on <strong>{{ shortSubmitted }}</strong> by {{ author }}</p>
+		
+    				<hr/>
+                    
+</template>

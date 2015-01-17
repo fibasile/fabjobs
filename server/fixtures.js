@@ -57,6 +57,8 @@ if (Jobs.find().count() === 0) {
       author: fibasile.profile.name,
       submitted: new Date(now - 7 * 3600 * 1000),
       featured: true,
+      completed: false,
+      published: true, 
       views: 2000,
       applications: 0,
       job: {
@@ -79,6 +81,8 @@ if (Jobs.find().count() === 0) {
       author: fibasile.profile.name,
       submitted: new Date(now - 24 * 3600 * 1000),
       featured: false,
+      completed: false,
+      published: true, 
       views: 35550,
       applications: 0,
       job: {
@@ -101,6 +105,8 @@ if (Jobs.find().count() === 0) {
       author: fibasile.profile.name,
       submitted: new Date(now - 48 * 3600 * 1000),
       featured: false,
+      completed: false,
+      published: false, 
       views: 10000,
       applications: 0,
       job: {

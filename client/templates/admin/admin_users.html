@@ -1,0 +1,39 @@
+<template name="adminUsers">
+<h4>Users</h4>
+<hr>
+<table class="table table-striped">
+    <tbody>
+       {{#each users}}
+           {{>adminUserRow}}
+       {{/each}} 
+    </tbody>
+</table>
+</template>
+
+
+<template name="adminUserRow">
+        <tr>
+            <td class="col-sm-3"><a href="#">jmm</a></td>
+            <td class="col-sm-3">Jean Michel Moleenaar</td>
+            <td class="col-sm-3">Manager, Admin</td>
+            <td class="col-sm-2 text-right">
+                <div class="dropdown">
+                <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                    <span class="fa fa-gear"></span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                  </ul>
+                </div>
+            </td>
+            <td class="col-sm-1">
+                <button class="btn btn-danger btn-sm">
+                    <span class="fa fa-trash"></span>
+                </button>
+            </td>
+        </tr>
+</template>

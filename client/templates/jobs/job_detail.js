@@ -1,8 +1,10 @@
 Template.jobDetail.helpers({
    shortSubmitted: function(){
       return moment(this.submitted).format('MMM Do YYYY');
+   },
+   formattedDescription: function(){
+       // todo add markdown parsing and rendering
    }
-   
    
 });
 

@@ -4,14 +4,17 @@
 		<div class="col-sm-3">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4>Welcome admin!</h4> 
+					<h4>Welcome admin!</h4>
+                    
 				</div>
 				<div class="panel-body">
 					
-					<ul class="nav" role="navigation">
-						<li role="presentation" class="active"><a href="#">Manage Users</a></li>
-						<li role="presentation"><a href="#">Job listings</a></li>
-						<li role="presentation"><a href="#">Notifications</a></li>
+					<ul class="nav nav-pills nav-stacked" role="navigation">
+                        <li role="presentation" class="{{activeIfRouteIs 'admin'}}"><a href="/admin">Dashboard</a></li>
+						<li role="presentation" class="{{activeIfRouteIs 'admin.users'}}"><a href="/admin/users">Users</a></li>
+						<li role="presentation" class="{{activeIfRouteIs 'admin.jobs'}}"><a href="/admin/jobs">Jobs</a></li>
+                        <!-- <li role="presentation" class="{{activeIfRouteIs 'admin.skills'}}"><a href="/admin/skills">Skills</a></li> -->                        
+						<li role="presentation" class="{{activeIfRouteIs 'admin.notifications'}}"><a href="/admin/notifications">Notifications</a></li>
 					</ul>
 				</div>
 			</div>
@@ -19,6 +22,7 @@
 		<div class="col-sm-9">
 			<div class="panel panel-default">
 				<div class="panel-body">
+                    {{> yield 'panel'}}
 				</div>
 			</div>
 			
