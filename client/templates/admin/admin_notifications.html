@@ -3,10 +3,17 @@
 <hr>
 <table class="table table-striped">
     <tbody>
-        <tr><td class="col-sm-2">12 March 2015</td>
-            <td>User <a href="#">fibasile</a> posted a new <a href="#">job listing</a></td></tr>
-        <tr><td class="col-sm-2">10 March 2015</td>
-            <td> User <a href="#">jmm</a> applied for <a href="#">Mechanical engineer</a> at <a href="#">Acme inc.</a></td></tr>
+	    {{#each notifications}}
+        {{> adminNotificationItem}}
+        {{/each}}
     </tbody>
 </table>
 </template>
+
+
+<template name="adminNotificationItem">
+<tr><td class="col-sm-3">{{formatShortDateTime submitted}}</td>
+            <td>{{message}}</td>
+            <td><a href="/jobs/{{keys.job}}">See job</a></td></tr>
+</template>
+        

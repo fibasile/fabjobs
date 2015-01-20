@@ -24,6 +24,25 @@ Meteor.publish('adminJobs', function(options) {
 });
 
 
+Meteor.publish('adminNotifications', function(options) {
+    //check(options, {
+    //    sort: Object,
+    //    limit: Number
+    //});
+    //console.log('publish hook');
+    var user=Meteor.users.findOne(this.userId);
+
+    if (AuthHooks.isAdmin(user) || AuthHooks.isManager())
+        return Notifications.find({}, options);
+    else {
+        return [];
+    }
+});
+
+
+
+
+
 Meteor.publish('jobApplications', function(job_id){
 	check(job_id, String);
 	var user=Meteor.users.findOne(this.userId);
