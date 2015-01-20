@@ -67,7 +67,8 @@
                 <a href="/jobs/{{_id}}">{{job.title}}</a><br/>
                 <span class="label label-default text-uppercase">{{job.type}}</span>
                 {{job.company_name}} | {{job.location}} </td>
-            <td></td>
+            <td>{{#if views}}<span class="fa fa-eye"></span> {{views}}<br/>{{/if}}
+	            {{#if applications}}<a href="/admin/jobs/applications/{{_id}}"> {{applications}} applied  </a>{{/if}}</td>
             <td class="col-sm-2 text-right">
                <div class="dropdown">
                <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
