@@ -1,6 +1,9 @@
 if (Jobs.find().count() === 0) {
    var now = new Date().getTime();
 
+
+   Jobs._ensureIndex({ "job.company_name": 1, "job.type" : 1, "job.description" : 1, "job.location" : 1, "job.category" : 1});
+
    var users = [{
       username: 'normal',
       name: "Normal User",
@@ -132,7 +135,7 @@ if (Jobs.find().count() === 0) {
          submitted: new Date(now - 48 * 3600 * 1000),
          featured: false,
          completed: false,
-         published: false,
+         published: true,
          views: 10000,
          applications: 0,
          job: {

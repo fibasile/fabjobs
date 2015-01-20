@@ -24,7 +24,8 @@
 						{{/each}}
 					</tbody>
 					</table>
-					<p class="pull-right">{{count}} jobs found</p>
+					<p class="text-center">{{#if nextAction}}<a class="btn btn-default" href="{{nextAction}}">More...</a>{{/if}}</p>
+					<p class="text-right">{{count}} jobs found</p>
 					{{else}}
 					Sorry, no job matches your query at the moment
 					{{/if}}
