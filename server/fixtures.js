@@ -5,27 +5,33 @@ if (Jobs.find().count() === 0) {
    Jobs._ensureIndex({ "job.company_name": 1, "job.type" : 1, "job.description" : 1, "job.location" : 1, "job.category" : 1});
 
    var users = [{
-      username: 'normal',
+      // username: 'normal',
       name: "Normal User",
       email: "normal@example.com",
       roles: []
    }, {
-      username: 'fibasile',
+      // username: 'fibasile',
       name: "Fiore Basile",
       email: "fiore.basile@gmail.com",
       roles: ['manager']
    }, {
-      username: 'admin',
+      // username: 'admin',
       name: "Admin User",
       email: "admin@example.com",
       roles: ['admin', 'manager']
+   }, {
+      // username: '',
+      name: "Jmm",
+      email: "jmm@example.com",
+      roles: []
    }];
 
    _.each(users, function(user) {
       var id;
 
       id = Accounts.createUser({
-         username: user.username,
+         // username: user.username,
+         username: user.email,
          email: user.email,
          password: "apple1",
          profile: {
@@ -49,7 +55,7 @@ if (Jobs.find().count() === 0) {
    //    // ]
    // });
    var fibasile = Meteor.users.findOne({
-      'username': 'fibasile'
+      'username': 'fiore.basile@gmail.com'
    });
 
 
