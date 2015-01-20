@@ -1,0 +1,52 @@
+<template name="adminUserDetail">
+	
+	<h5>User details</h5>
+	
+	<hr>
+	
+	{{#with user}}
+	
+	<dl>
+		<dt>Username:</dt>
+		<di>{{ username }}</di>
+	
+	
+	<dt>Full name:</dt>
+	<di>{{ profile.name }}</di>
+	
+	<dt>Email</dt>
+	<di><a href="mailto:{{email}}">{{ email }}</a></di>
+	
+	
+	<dt>Roles:</dt>
+	<di>
+
+	<div class="radio">
+	  <label>
+	    <input type="radio" name="role" id="normalRadio" value="" {{ checkedIf ''}}>
+		 Regular user
+	  </label>
+	</div>
+	<div class="radio">
+	  <label>
+	    <input type="radio" name="role" id="managerRadio" value="manager" {{ checkedIf 'manager'}}>
+		 Manager
+	  </label>
+	</div>
+	<div class="radio disabled">
+	  <label>
+	    <input type="radio" name="role" id="adminRadio" value="admin" {{checkedIf 'admin'}}>
+		 Admin
+	  </label>
+	</div>
+	</di>
+	
+	</dl>
+	{{/with}}
+	
+	<button class="btn btn-default" id="back">Back</button>
+	
+	<button class="btn btn-danger pull-right" id="updateUser">Update</button>
+	
+	
+</template>

@@ -1,8 +1,7 @@
-Template.adminUsers.helpers({
-    users: function(){
-        return [
-            {'username' : 'jmm', 'profile.name' : 'Jean Michel Moleenar', '_id':'342423423'}
-        ];
-    } 
-    
+Template.adminUserRow.helpers({
+   email: function(){
+      if (this.emails && this.emails.length > 0 ){
+         return this.emails[0].address;
+      }
+   }
 });

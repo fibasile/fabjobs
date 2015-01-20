@@ -1,15 +1,20 @@
 <template name="jobDetail">
 				<h3 class="visible-print-block"><a href="http://jobs.fabeconomy.com">Fab Economy Job Board</a></h3>
 	
-				<h3>{{ job.title }} {{#if completed}}<span class="label label-danger">                        POSITION FILLED
-</span>{{/if}}</h3>
-                
+				<h3>{{ job.title }}</h3>
+			       
 				<h5><a href="{{ job.website }}">{{ job.company_name}}</a></h5>
 				<p><span class="label label-success text-uppercase">{{ job.type }}</span> 
 					{{#if featured}}
 						<span class="label label-warning text-uppercase">featured</span>
 					{{/if}}
-					| {{ job.location }} | Posted on <strong>{{ shortSubmitted }}</strong> by {{ author }}</p>
+					| {{ job.location }} | Posted on <strong>{{ shortSubmitted }}</strong> by {{ author }}
+				<div class="pull-right">
+				{{#if completed}}<span class="label label-danger">POSITION FILLED
+				</span>{{/if}}
+			   </div>
+				
+				</p>
 		
 				<hr/>
 

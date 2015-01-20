@@ -2,6 +2,15 @@
 <h4>Users</h4>
 <hr>
 <table class="table table-striped">
+	<thead>
+		 <tr>
+			 <th>username</th>
+			 <th>full name</th>
+			 <th>email</th>
+			 <th>roles</th>
+			 <th colspan="2"></th>
+		 </tr>
+	</thead>
     <tbody>
        {{#each users}}
            {{>adminUserRow}}
@@ -13,23 +22,16 @@
 
 <template name="adminUserRow">
         <tr>
-            <td class="col-sm-3"><a href="#">jmm</a></td>
-            <td class="col-sm-3">Jean Michel Moleenaar</td>
-            <td class="col-sm-3">Manager, Admin</td>
-            <td class="col-sm-2 text-right">
-                <div class="dropdown">
-                <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                    <span class="fa fa-gear"></span>
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-                  </ul>
-                </div>
+            <td class="col-sm-3"><a href="/admin/user/{{_id}}">{{username}}</a></td>
+            <td class="col-sm-3">{{ profile.name }}</td>
+            <td class="col-sm-3">{{ email }}</td>
+				
+            <td class="col-sm-3">
+	            {{#each roles}}
+	            	<span class="label label-default">{{this}}</span> 
+	            {{/each}}
             </td>
+            
             <td class="col-sm-1">
                 <button class="btn btn-danger btn-sm">
                     <span class="fa fa-trash"></span>

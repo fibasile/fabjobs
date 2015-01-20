@@ -60,7 +60,7 @@
                 <span class="label label-info text-uppercase">pending</span>
                 {{/if}}
                 {{#if completed}}
-                <span class="label label-danger text-uppercase">closed</span>
+                <span class="label label-danger text-uppercase">filled</span>
                 {{/if}}
             </td>
     		<td>{{#if featured}}<span class="fa fa-star yellow"></span>{{/if}}
@@ -93,9 +93,9 @@
                    <li role="presentation"><a role="menuitem" id="details" tabindex="-1" href="#">Edit</a></li>
                    <li role="presentation">
                        {{#if completed}}
-                       <a role="menuitem" tabindex="-1" href="#" id="reopen">Reopen listing</a>
+                       <a role="menuitem" tabindex="-1" href="#" id="reopen">Position open</a>
                        {{else}}
-                       <a role="menuitem" tabindex="-1" href="#" id="close">Close listing</a>
+                       <a role="menuitem" tabindex="-1" href="#" id="close">Position filled</a>
                        {{/if}}
                        </li>
                  </ul>
