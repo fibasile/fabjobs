@@ -1,0 +1,111 @@
+<template name="jobForm">
+
+    <p><span class="label label-default">COMPANY DETAILS</span></p>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="company_name" class="control-label">Company name</label>
+                <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Acme Inc"
+                       value="{{job.company_name}}" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="website">Website</label>
+                <input type="url" class="form-control" name="website" id="website" placeholder="http://"
+                       value="{{job.website}}" required>
+            </div>
+        </div>
+    </div>
+    <p><span class="label label-default">JOB DETAILS</span></p>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="title">Job title</label>
+                <input type="text" id="title" name="title" class="form-control" placeholder="" required
+                        value="{{job.title}}">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="job_type">Job type</label>
+                <select id="job_type" name="job_type" class="form-control"  required>
+                    <option value="" selected>Select a type</option>
+                    {{#each types}}
+                        <option value="{{label}}" selected="{{selectedIf .. 'job.type' label}}">{{label}}</option>
+                    {{/each}}
+                </select>
+            </div> <!-- form group end-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea rows="3" name="description" id="description" class="form-control"  required>{{job.description}}</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Job category</label>
+                <select id="job_category" name="job_category" class="form-control"  required>
+                    <option value="" selected>Select a category</option>
+                    {{#each categories}}
+                        <option value="{{label}}" selected="{{selectedIf .. 'job.category' label}}">{{label}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Job salary (USD)</label>
+                <select id="job_salary" name="job_salary" class="form-control">
+                    {{#each salaries}}
+                        <option value="{{value}}" selected="{{selectedIf .. 'job.salary' value}}">{{label}}</option>
+                    {{/each}}
+                </select>
+            </div> <!-- form group end-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Job Location</label>
+                <div class="form-group">
+										<span class="help-block">
+											Leave blank if the location of the applicant does not matter e.g. the job involves working from home.
+										</span>
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="geolocation-address" name="geolocation-address" autocomplete="off" placeholder=""
+                                    value="{{job.location}}">
+
+                        </div>
+                        <div class="col-sm-2">
+                            <a class="btn btn-primary btn-success" id="geolocation-load" href="#">Search</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" class="text" id="geolocation-latitude" name="geolocation-latitude" value="{{job.lat}}">
+                    <input type="hidden" class="text" id="geolocation-longitude" name="geolocation-longitude" value="{{job.long}}">
+                    <div id="geolocation-map" style="height: 400px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>How to apply</label>
+                <textarea name="instructions" id="instructions" rows="3" class="form-control">{{job.instructions}}</textarea>
+                <span class="help-block">Tell applicants how to apply – they will also be able to apply via the “apply” button on the listing's page.</span>
+            </div>
+        </div>
+    </div>
+
+</template>

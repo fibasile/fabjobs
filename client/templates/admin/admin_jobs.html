@@ -1,11 +1,11 @@
 <template name="adminJobs">
     <h4>Job listings</h4> 
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="{{activeTab 'all'}}"><a href="/admin/jobs">Show All</a></li>
-        <li role="presentation" class="{{activeTab 'published'}}"><a href="/admin/jobs/published">Published</a></li>
-        <li role="presentation" class="{{activeTab 'pending'}}"><a href="/admin/jobs/pending">Pending</a></li>
-        <li role="presentation" class="{{activeTab 'featured'}}"><a href="/admin/jobs/featured">Featured</a></li>
-        <li role="presentation" class="{{activeTab 'completed'}}"><a href="/admin/jobs/completed">Completed</a></li>
+        <li role="presentation" class="{{activeTab 'all'}}"><a href="/admin/jobs/list/all">Show All</a></li>
+        <li role="presentation" class="{{activeTab 'published'}}"><a href="/admin/jobs/list/published">Published</a></li>
+        <li role="presentation" class="{{activeTab 'pending'}}"><a href="/admin/jobs/list/pending">Pending</a></li>
+        <li role="presentation" class="{{activeTab 'featured'}}"><a href="/admin/jobs/list/featured">Featured</a></li>
+        <li role="presentation" class="{{activeTab 'completed'}}"><a href="/admin/jobs/list/completed">Completed</a></li>
     </ul>
 <br/>
 <table class="table table-striped">
@@ -14,11 +14,38 @@
            {{>adminJobsRow}}
        {{else}}
            {{>adminNoJobsRow}}
-       {{/each}} 
+       {{/each}}
+
     </tbody>
 </table>
+    {{#if jobs }}
+        {{> adminJobsPaging }}
+    {{/if}}
 
 </template>
+
+<template name="adminJobsPaging">
+
+    <div class="pull-right">
+    {{ total }} jobs found
+    </div>
+
+    <nav>
+        <ul class="pagination">
+            {{#each pages}}
+                <li>
+                {{#if blank}}
+                <a class="active" href="{{link}}">{{num}}</a>
+                {{else}}
+                <a href="{{link}}">{{num}}</a>
+                {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    </nav>
+
+</template>
+
 
 <template name="adminNoJobsRow">
     	<tr>
@@ -62,7 +89,7 @@
                        <a role="menuitem" tabindex="-1" href="#" id="feature">Featured</a>
                         {{/if}}
                     </li>
-                   <li role="presentation"><a role="menuitem" id="details" tabindex="-1" href="#">Details</a></li>
+                   <li role="presentation"><a role="menuitem" id="details" tabindex="-1" href="#">Edit</a></li>
                    <li role="presentation">
                        {{#if completed}}
                        <a role="menuitem" tabindex="-1" href="#" id="reopen">Reopen listing</a>

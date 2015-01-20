@@ -17,7 +17,9 @@ Template.adminJobsRow.helpers({
 });
 
 Template.adminJobsRow.events({
-    'click #unfeature': function(){
+    'click #unfeature': function(ev){
+        ev.preventDefault();
+
         Meteor.call("featureJob",this,false, function(error){
             if (error){
                 console.log('Error in unfeature ' + error);
@@ -25,7 +27,9 @@ Template.adminJobsRow.events({
             }
         });
     },
-    'click #feature': function(){
+    'click #feature': function(ev){
+        ev.preventDefault();
+
         Meteor.call("featureJob",this,true, function(error){
             if (error){
                 console.log('Error in feature ' + error);
@@ -33,7 +37,9 @@ Template.adminJobsRow.events({
             }            
         });
     },
-    'click #unpublish': function(){
+    'click #unpublish': function(ev){
+        ev.preventDefault();
+
         Meteor.call("publishJob",this,false, function(error){
             if (error){
                 console.log('Error in unpublish ' + error);
@@ -42,7 +48,9 @@ Template.adminJobsRow.events({
             
         });        
     },
-    'click #publish': function(){
+    'click #publish': function(ev){
+        ev.preventDefault();
+
         Meteor.call("publishJob",this,true, function(error){
             if (error){
                 console.log('Error in publish ' + error);
@@ -52,7 +60,9 @@ Template.adminJobsRow.events({
             
         });
     },
-    'click #close': function(){
+    'click #close': function(ev){
+        ev.preventDefault();
+
         Meteor.call("completeJob",this,true, function(error){
             if (error){
                 console.log('Error in close ' + error);
@@ -61,7 +71,9 @@ Template.adminJobsRow.events({
             
         });
     },
-    'click #reopen': function(){
+    'click #reopen': function(ev){
+        ev.preventDefault();
+
         Meteor.call("completeJob",this,false, function(error){
             if (error){
                 console.log('Error in reopen ' + error);
@@ -79,8 +91,47 @@ Template.adminJobsRow.events({
         };
         bootbox.confirm(message, callback);
     },
-    'click #details': function(){
-        alert('details');
+    'click #details': function(ev){
+        ev.preventDefault();
+        var destination = '/admin/jobs/edit/' + this._id;
+        console.log(destination);
+        Router.go(destination);
     }
 });
 
+Template.adminJobsPaging.helpers({
+
+    pages: function(){
+        pArray = new Array();
+        var current = Template.currentData().currentPage;
+        var total = Template.currentData().totalPages;
+        var tab = Template.currentData().currentTab;
+        for (var i=0; i<total; i++){
+            pArray.push({
+               link:  '/admin/jobs/list/' +tab+ '?page=' + i,
+                num: i+1,
+                blank: i == current
+            });
+        }
+        return pArray;
+    }
+    // init bootpag
+    //console.log('bootpag');
+
+    //console.log(this);
+    //
+    //var total = Template.currentData().total;
+    //var currentPage = Template.currentData().currentPage;
+    //var currentTab = Template.currentData().currentTab;
+    //this.$('#page-selection').bootpag({
+    //    total: total,
+    //    page: currentPage+1
+    //}).on("page", function(event, num){
+    //    //event.preventDefault();
+    //    console.log('page ' + num);
+    //    Router.go('/admin/jobs/list/' + currentTab +'?page=' + num);
+    //});
+
+
+
+});

@@ -1,5 +1,8 @@
 <template name="jobApplyForm">
-    
+
+	<h4>Application form</h4>
+
+	<div class="well">
     				<h3>{{ job.title }} {{#if completed}}<span class="label label-danger">                        POSITION FILLED
     </span>{{/if}}</h3>
                 
@@ -9,7 +12,88 @@
     						<span class="label label-warning text-uppercase">featured</span>
     					{{/if}}
     					| {{ job.location }} | Posted on <strong>{{ shortSubmitted }}</strong> by {{ author }}</p>
-		
-    				<hr/>
-                    
+
+    </div>
+
+	<p>Please fill in the form below to apply for this job.</p>
+    <form id="applicationForm">
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+				<p><span class="label label-default text-uppercase">Contact details</span></p>
+				<div class="row">
+					<div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <input class="form-control" type="text" name="fullname" value="">
+                        </div>
+					</div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input class="form-control" type="email" name="email" value="">
+                        </div>
+					</div>
+				</div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="website">Website</label>
+                            <input class="form-control" type="url" name="fullname" value="">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="linkedin">Linkedin profile</label>
+                            <input class="form-control" type="url" name="linkedin" value="">
+                        </div>
+                    </div>
+                </div>
+
+
+	            <p><span class="label label-default text-uppercase">Profile</span></p>
+				<div class="row">
+					<div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <textarea class="form-control" rows="3" name="bio"></textarea>
+					<span class="help-block">Some information about you and your interests,
+						keep it concise max 300 words</span>
+                        </div>
+					</div>
+				</div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="education">Education</label>
+                            <textarea class="form-control" rows="3" name="education"></textarea>
+					<span class="help-block">Tell us more about your education, max 300 words</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="work_experience">Work Experience</label>
+                            <textarea class="form-control" rows="3" name="work_experience"></textarea>
+                            <span class="help-block">Tell us more about your work experience, max 300 words</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="work_experience">Additional notes</label>
+                            <textarea class="form-control" rows="3" name="work_experience"></textarea>
+                            <span class="help-block">Any additional motivation to hire you, max 300 words</span>
+                        </div>
+                    </div>
+                </div>
+		</div>
+	</div>
+        <button class="btn btn-lg btn-success pull-right" type="submit">
+            Send application
+        </button>
+    </form>
+
 </template>
