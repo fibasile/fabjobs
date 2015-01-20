@@ -1,4 +1,4 @@
-var submitForm= function(){
+var submitForm= function(originalJob,job_id){
     var form = $('#jobForm');
     var attributes = form.serializeArray();
     var job = {};
@@ -19,10 +19,13 @@ var submitForm= function(){
             k = 'salary';
         job[k]=v;
     });
-    console.log(job);
+    
+    console.log('Updating ' + job_id);
+    console.log('Original was ');
+    console.log(originalJob);
 
 
-    Meteor.call('updateJob',this, { job: job}, this._id,
+    Meteor.call('updateJob',originalJob, { job: job}, job_id,
         function (error) {
             // identify the error
             if (error){
@@ -39,6 +42,8 @@ var submitForm= function(){
 
 Template.adminJobEditForm.rendered= function(){
     //setup validation
+   var job = this.data.job;
+   
     $('#jobForm').formValidation({
         // I am validating Bootstrap form
         message: 'This value is not valid',
@@ -66,7 +71,7 @@ Template.adminJobEditForm.rendered= function(){
     }).on('success.form.fv', function(e) {
         // Prevent form submission
         e.preventDefault();
-        submitForm();
+        submitForm(job, job._id);
     });;
     $('#geolocation-address').keypress(function(event){
         if (event.which == 13) {
