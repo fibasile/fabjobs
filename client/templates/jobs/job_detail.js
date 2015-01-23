@@ -7,6 +7,16 @@ Template.jobDetail.helpers({
    },
    similarJobs: function(){
       return Jobs.find({'published' : true,  _id: {$ne: this._id}, $or : [{ 'job.category': this.job.category},{'job.company' : this.job.company_name}, {'job.location' : this.job.location }]}, { sort: { submitted: -1, _id: -1}, limit: 5});
+   },
+   isAdminOrManager: function(){
+      var u = Meteor.user();
+      if (u && (AuthHooks.isAdmin(u) || AuthHooks.isManager(u))){
+         return true;
+      }
+      return false;
+   },
+   appCount: function(){
+     return JobApplications.find( {jobId: this._id}).count();
    }
    
 });
