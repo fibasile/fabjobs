@@ -15,5 +15,28 @@ Meteor.methods({
          } else {
              throw new Meteor.Error(607, 'You need permission to update user roles');
          }
+   },
+   updateUserProfile: function(profile){
+      var userId = Meteor.userId();
+      var user = Meteor.users.findOne({_id:userId});
+      if (!user){
+         throw new Meteor.Error(500, 'You must be logged in to update your profile');         
+      }
+      if (profile.fullname){
+         Meteor.users.update({_id: userId}, {$set: {'profile.name' : profile.fullname}}, function(error){
+            if (error){
+               throw new Meteor.Error(500, error);
+            }
+         });
+      }
+      if (profile.password){
+         if (profile.password && profile.password.length > 6) {            
+            Accounts.setPassword(userId, profile.password);
+         }
+      }
+      
+      
    }
+   
+   
 });
