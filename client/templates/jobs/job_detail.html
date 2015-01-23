@@ -74,11 +74,11 @@
 					</div>
 				</div>
 				<div class="panel">
-					<div class="panel-heading">SIMILAR JOBS</div>
+					<div class="panel-heading">SIMILAR JOBS <br/> <small>Same category, company or location</small></div>
 					<div class="panel-body">
-						<p><a href="#">Job position</a> <br/> Acme Inc</p>
-						<p><a href="#">Job position</a> <br/> Acme Inc</p>
-						<p><a href="#">Job position</a> <br/> Acme Inc</p>
+						{{#each similarJobs}}
+						<p><a href="/jobs/{{ _id }}">{{ job.title }}</a> <br/> {{ job.company_name }} <br/> {{ job.location}}</p>
+						{{/each}}
 					</div>
 				</div>
 				
