@@ -12,7 +12,7 @@ Template.adminJobsRow.helpers({
     hilightIfFeatured: function(){
         return this.featured ? 'success' : '';
     }
-    
+
     
 });
 
@@ -110,7 +110,7 @@ Template.adminJobsPaging.helpers({
             pArray.push({
                link:  '/admin/jobs/list/' +tab+ '?page=' + i,
                 num: i+1,
-                blank: i == current
+               blank: (i == current) ? 'active' : ''
             });
         }
         return pArray;
