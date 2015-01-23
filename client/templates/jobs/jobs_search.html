@@ -3,13 +3,19 @@
 		  	 <div class="col-sm-9">
 	
 			<div>
-			<h5>Search results for: 
+			<h5>Search results for: {{#if hasSearch}}
 					{{#each filters}}
 						<span><mark>{{this}}</mark></span>
 					{{/each}}
 					{{#each tags}}
 						<span><mark>{{this}}</mark></span>
 					{{/each}}
+					{{#if text}}
+						<span><mark>{{text}}</mark></span>
+					{{/if}} 
+					{{ else }}
+						all jobs
+					{{/if}}
 			</h5>
 			</div>
 				
