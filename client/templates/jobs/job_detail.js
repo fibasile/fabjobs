@@ -4,9 +4,36 @@ Template.jobDetail.helpers({
    },
    formattedDescription: function(){
        // todo add markdown parsing and rendering
+   },
+   similarJobs: function(){
+      return Jobs.find({'published' : true,  _id: {$ne: this._id}, $or : [{ 'job.category': this.job.category},{'job.company' : this.job.company_name}, {'job.location' : this.job.location }]}, { sort: { submitted: -1, _id: -1}, limit: 5});
+   },
+   isAdminOrManager: function(){
+      var u = Meteor.user();
+      if (u && (AuthHooks.isAdmin(u) || AuthHooks.isManager(u))){
+         return true;
+      }
+      return false;
+   },
+   appCount: function(){
+     return JobApplications.find( {jobId: this._id}).count();
    }
    
 });
+
+Template.jobDetail.rendered = function(){
+   
+   var disqus_shortname = 'fabeconomy'; // required: replace example with your forum shortname
+
+   /* * * DON'T EDIT BELOW THIS LINE * * */
+   (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+   })();
+   
+   
+};
 
 Template.jobDetail.events({
    

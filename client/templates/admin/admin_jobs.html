@@ -30,15 +30,11 @@
     {{ total }} jobs found
     </div>
 
-    <nav>
+    <nav class="text-center">
         <ul class="pagination">
             {{#each pages}}
-                <li>
-                {{#if blank}}
-                <a class="active" href="{{link}}">{{num}}</a>
-                {{else}}
+                <li class="{{blank}}">
                 <a href="{{link}}">{{num}}</a>
-                {{/if}}
                 </li>
             {{/each}}
         </ul>

@@ -57,9 +57,12 @@
                     {{#if completed}}
                    
                     {{else}}
-					<a href="/jobs/{{ _id }}/apply" class="pull-right btn btn-lg btn-success">Apply now</a>
+					<a href="/jobs/apply/{{ _id }}" class="pull-right btn btn-lg btn-success">Apply now</a>
                     {{/if}}
 				</p>
+				
+		      <div id="disqus_thread"></div>
+		      
 				
 		</div>
 		<div class="col-md-3 hidden-print">
@@ -69,20 +72,26 @@
 							<li><a href="#" id="shareFB"><span class="fa fa-facebook"></span> Share on Facebook</a></li>
 							<li><a href="#" id="shareTwitter"><span class="fa fa-twitter"></span> Share on Twitter</a></li>
 							<li><a href="#" id="sharePrint"><span class="fa fa-print"></span> Print</a></li>
-							
+							{{#if isAdminOrManager }}
+								{{#if appCount}}
+							<li><a href="/admin/jobs/applications/{{this._id}}" class="text-danger"><span class="fa fa-suitcase"></span> See who applied ({{appCount}})</a></li>
+								{{/if}}
+							{{/if}}
 						</ul>
 					</div>
 				</div>
 				<div class="panel">
-					<div class="panel-heading">SIMILAR JOBS</div>
+					<div class="panel-heading">SIMILAR JOBS <br/> <small>Same category, company or location</small></div>
 					<div class="panel-body">
-						<p><a href="#">Job position</a> <br/> Acme Inc</p>
-						<p><a href="#">Job position</a> <br/> Acme Inc</p>
-						<p><a href="#">Job position</a> <br/> Acme Inc</p>
+						{{#each similarJobs}}
+						<p><a href="/jobs/{{ _id }}">{{ job.title }}</a> <br/> {{ job.company_name }} <br/> {{ job.location}}</p>
+						{{/each}}
 					</div>
 				</div>
 				
 		</div>
 	</div>
+	
+	
 	
 </template>
