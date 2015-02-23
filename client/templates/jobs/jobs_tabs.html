@@ -11,6 +11,19 @@
 
 	   <!-- Tab panes -->
 	   <div class="tab-content">
+ 	     <div role="tabpanel" class="tab-pane" id="recent">
+ 			<br/>
+ 			<table class="table table-striped">
+ 				<tbody>
+ 					{{#each recentJobs}}
+ 					{{> jobItem }}
+ 					{{/each}}
+ 				</tbody>
+ 			</table>
+			
+ 	     	<p><span class="pull-right"><a href="/jobs/search">see more jobs</a></span></p>
+			
+ 	     </div>
 	     <div role="tabpanel" class="tab-pane active" id="featured">
 			<br/>
 			<table class="table table-striped">
@@ -24,19 +37,7 @@
 	     	<p><span class="pull-right"><a href="/jobs/search">see more jobs</a></span></p>
 		
 	     </div>
-	     <div role="tabpanel" class="tab-pane" id="recent">
-			<br/>
-			<table class="table table-striped">
-				<tbody>
-					{{#each recentJobs}}
-					{{> jobItem }}
-					{{/each}}
-				</tbody>
-			</table>
-			
-	     	<p><span class="pull-right"><a href="/jobs/search">see more jobs</a></span></p>
-			
-	     </div>
+	     
 	     <div role="tabpanel" class="tab-pane" id="top">
 			<br/>
 			<table class="table table-striped">
