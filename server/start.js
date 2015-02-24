@@ -8,6 +8,7 @@ Meteor.startup(function () {
   Accounts.onCreateUser(function(options, user){
      if (user.emails && user.emails.length > 0){
         user.username = user.emails[0].address;
+        user.profile = { 'name' : user.username };
      }
      return user;
   });
