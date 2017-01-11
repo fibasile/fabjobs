@@ -1,3 +1,6 @@
 [submodule "public/vendor/formvalidation"]
 	path = public/vendor/formvalidation
 	url = https://github.com/formvalidation/formvalidation.git
+[submodule "packages/accounts-ui-bootstrap3"]
+	path = packages/accounts-ui-bootstrap3
+	url = https://github.com/fibasile/accounts-ui-bootstrap3.git
