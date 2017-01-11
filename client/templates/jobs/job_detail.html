@@ -24,9 +24,11 @@
 				<div class="panel panel-default" style="min-height: 200px">
 					<div class="panel-body">
 						<h5>JOB DESCRIPTION</h5>
-						{{ job.description }}
-
-
+						<div style="whitespace: pre-line;">
+                            {{#each splitOnNewlines job.description}}
+                              <p>{{this}}</p>
+                            {{/each}}
+                        </div>
 					</div>
 				</div>
 	
@@ -48,17 +50,14 @@
             	<div class="panel panel-default">
                 	<div class="panel-body">
                     	<h5>HOW TO APPLY</h5>
-						{{ job.instructions }}
+						{{#each splitOnNewlines job.instructions }}
+                          <p>{{this}}</p>
+                        {{/each}}
 					</div>
 				</div>
 	
 				<p class="hidden-print">
 					<a href="" class="btn btn-lg btn-primary" id="goBack"><span class="fa fa-arrow-left"></span> Back</a>
-                    {{#if completed}}
-                   
-                    {{else}}
-					<a href="/jobs/apply/{{ _id }}" class="pull-right btn btn-lg btn-success">Apply now</a>
-                    {{/if}}
 				</p>
 				
 		      <div id="disqus_thread"></div>

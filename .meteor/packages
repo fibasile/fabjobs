@@ -15,6 +15,8 @@ alanning:roles
 markdown
 mizzao:bootboxjs
 alethes:pages
-mrt:accounts-ui-bootstrap-3
 meteorhacks:fast-render
 email
+fibasile:accounts-ui-bootstrap-3
+yagni:split-on-newlines
+service-configuration

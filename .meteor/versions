@@ -18,6 +18,7 @@ deps@1.0.6
 ejson@1.0.5
 email@1.0.5
 fastclick@1.0.2
+fibasile:accounts-ui-bootstrap-3@0.3.10
 follower-livedata@1.0.3
 fortawesome:fontawesome@4.2.0_2
 geojson-utils@1.0.2
@@ -26,14 +27,14 @@ html-tools@1.0.3
 htmljs@1.0.3
 http@1.0.10
 id-map@1.0.2
-iron:controller@1.0.7
-iron:core@1.0.7
-iron:dynamic-template@1.0.7
-iron:layout@1.0.7
-iron:location@1.0.7
-iron:middleware-stack@1.0.7
-iron:router@1.0.7
-iron:url@1.0.7
+iron:controller@1.0.8
+iron:core@1.0.11
+iron:dynamic-template@1.0.8
+iron:layout@1.0.8
+iron:location@1.0.11
+iron:middleware-stack@1.1.0
+iron:router@1.0.9
+iron:url@1.0.11
 jquery@1.11.3
 json@1.0.2
 launch-screen@1.0.1
@@ -52,7 +53,6 @@ mizzao:bootboxjs@4.3.0
 mobile-status-bar@1.0.2
 momentjs:moment@2.9.0
 mongo@1.0.11
-mrt:accounts-ui-bootstrap-3@0.3.3
 npm-bcrypt@0.7.7
 observe-sequence@1.0.4
 ordered-dict@1.0.2
@@ -78,3 +78,4 @@ underscore@1.0.2
 url@1.0.3
 webapp@1.1.6
 webapp-hashing@1.0.2
+yagni:split-on-newlines@0.0.5
